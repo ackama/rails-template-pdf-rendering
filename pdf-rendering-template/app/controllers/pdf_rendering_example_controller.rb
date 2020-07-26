@@ -19,7 +19,9 @@ class PdfRenderingExampleController < ApplicationController
       end
 
       format.pdf do
-        pdf = build_rendered_pdf(html: render_to_string(:show, formats: [:html]))
+        html = render_as_html(template_path: "pdf_rendering_example/show.html.erb",
+                              assigments: { example_num: @example_num })
+        pdf = generate_pdf_from(html: html)
         send_file(pdf.file_path, filename: pdf.download_as_filename, type: pdf.mime_type)
       end
     end
@@ -27,9 +29,13 @@ class PdfRenderingExampleController < ApplicationController
 
   private
 
-  def build_rendered_pdf(html:)
-    renderer = PdfRenderingService.new(from_html: html)
-    renderer.render
-    renderer.pdf
+  def render_as_html(template_path:, assigments:)
+    renderer = ApplicationController.renderer.new
+
+    renderer.render(file: template_path, assigns: assigments)
+  end
+
+  def generate_pdf_from(html:)
+    PdfRenderingService.new(from_html: html).render
   end
 end

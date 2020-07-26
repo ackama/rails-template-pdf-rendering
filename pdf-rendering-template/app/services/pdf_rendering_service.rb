@@ -24,6 +24,9 @@ class PdfRenderingService
     @pdf = nil
   end
 
+  ##
+  # @return [PdfRenderingService::RenderedPdf]
+  #
   def render
     # mutate @html in place (for performance reasons)
     mutate_html_by_inserting_base_tag
@@ -52,6 +55,8 @@ class PdfRenderingService
     # Finally we build the RenderedPdf instance which represents the results of
     # our work to the rest of the system
     @pdf = PdfRenderingService::RenderedPdf.new(file_path: pdf_path)
+
+    @pdf
   end
 
   private
