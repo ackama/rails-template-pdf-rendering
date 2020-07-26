@@ -4,7 +4,7 @@ class PdfRenderingService
   class ChromeTimeoutError < Error; end
 
   # Create a place for us to work under the Rails `tmp/` dir
-  TMP_DIR_PATH = Rails.root.join("tmp", "pdf_rendering").to_s.freeze
+  TMP_DIR_PATH = Rails.root.join("tmp/pdf_rendering").to_s.freeze
 
   # Set a maximum amount of time we will allow Chrome to attempt to render the
   # PDF
@@ -77,7 +77,7 @@ class PdfRenderingService
   end
 
   def render_as_pdf(input_html_path:, output_pdf_path:)
-    cmd = "node #{Rails.root.join("bin", "render-pdf.js")} #{input_html_path} #{output_pdf_path}"
+    cmd = "node #{Rails.root.join("bin/render-pdf.js")} #{input_html_path} #{output_pdf_path}"
     Rails.logger.info(cmd)
 
     error_msg = "Chrome did not complete the PDF conversion within the #{PDF_CONVERSION_TIMEOUT_SECONDS} second timeout"
@@ -119,4 +119,3 @@ class PdfRenderingService
     "<base href='#{protocol}://#{domain}'/>"
   end
 end
-

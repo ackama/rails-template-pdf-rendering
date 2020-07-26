@@ -15,4 +15,3 @@ class PdfRenderingService
     end
   end
 end
-

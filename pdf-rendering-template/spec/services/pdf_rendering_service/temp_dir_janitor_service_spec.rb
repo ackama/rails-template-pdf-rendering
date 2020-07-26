@@ -1,16 +1,14 @@
 require "rails_helper"
 
-RSpec.describe TempDirJanitorService do
+RSpec.describe PdfRenderingService::TempDirJanitorService do
   let(:keepable_file) { "keep-me.txt" }
   let(:removable_file) { "remove-me.txt" }
-
-  subject { TempDirJanitorService.new(tmp_dir_path: tmp_dir_path) }
 
   describe "#remove_old_files" do
     it "removes all files & folders which are older than an hour" do
       Dir.mktmpdir do |tmp_dir|
         # given
-        subject = TempDirJanitorService.new(tmp_dir_path: tmp_dir)
+        janitor = described_class.new(tmp_dir_path: tmp_dir)
         Dir.chdir(tmp_dir) do
           # 'mtime' parameter requires an actual instance if Time, not
           # ActiveSupport::TimeWithZone so we need to call #to_time
@@ -19,7 +17,7 @@ RSpec.describe TempDirJanitorService do
         end
 
         # when
-        subject.remove_old_files
+        janitor.remove_old_files
 
         # then
         Dir.chdir(tmp_dir) do
@@ -30,4 +28,3 @@ RSpec.describe TempDirJanitorService do
     end
   end
 end
-
