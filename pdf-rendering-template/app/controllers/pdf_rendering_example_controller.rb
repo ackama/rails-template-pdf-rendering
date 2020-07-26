@@ -29,6 +29,11 @@ class PdfRenderingExampleController < ApplicationController
 
   private
 
+  ##
+  # @param [String] template_path - Path to the template to render
+  # @param [Hash] assigments - Instance variables which should be made available in the templates
+  # @return [ActionView::OutputBuffer] rendered HTML
+  #
   def render_as_html(template_path:, assigments:)
     ##
     # Create a new instance of of ActionController::Renderer, passing it our
@@ -43,6 +48,10 @@ class PdfRenderingExampleController < ApplicationController
     renderer.render(file: template_path, assigns: assigments)
   end
 
+  ##
+  # @param [String] html
+  # @return [PdfRenderingService::RenderedPdf]
+  #
   def generate_pdf_from(html:)
     PdfRenderingService.new(from_html: html).render
   end
