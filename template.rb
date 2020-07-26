@@ -1,3 +1,10 @@
+##
+# Documentation for Rails templates:
+#   https://guides.rubyonrails.org/rails_application_templates.html
+#
+# Rails templates make extensive use of Thor. If you can't find docs for a
+# function in the guide above, search the Thor docs.
+#
 def main # rubocop:disable Metrics/MethodLength
   add_template_repository_to_source_path
 

@@ -22,10 +22,33 @@ $ cd path/to/your/rails/app
 # Step 3:
 
 $ bundle exec rails app:template LOCATION=https://raw.githubusercontent.com/ackama/rails-template-pdf-rendering/main/template.rb
+
+# or if you have already cloned this repo locally then
+$ bundle exec rails app:template LOCATION=path/to/wherever/you/cloned/rails-template-pdf-rendering/template.rb
 ```
 
-# TODO
+## How to develop this template
 
-be rails app:template LOCATION=~/Code/repos/rails-template-pdf-rendering/template.rb
+```bash
+# Step: Clone this repo
 
-talk about how to install chrome on heroku and on ubuntu
+$ cd path/to/this/repo
+
+$ bundle install
+
+# Run our (very minimal) checks
+$ bundle exec rubocop
+```
+
+```bash
+# Create/choose a rails app to test this template on
+
+# Apply the template to your application
+$ cd path/to/new/rails/app
+$ bundle exec rails app:template LOCATION=path/to/wherever/you/cloned/rails-template-pdf-rendering/template.rb
+
+# Clean up changes made by this template
+# WARNING: this can delete files you care about - understand what `git clean`
+#          does before you run it.
+$ git clean -fd && git checkout .
+```
