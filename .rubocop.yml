@@ -1,0 +1,102 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+inherit_from:
+  - https://bitbucket.org/rabidtech/rabid-dotfiles/raw/master/.rubocop.yml
+
+
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  TargetRubyVersion: 2.6
+  Exclude:
+    - db/schema.rb
+    - "node_modules/**/*"
+    - "bower_components/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+
+Layout/SpaceAroundEqualsInParameterDefault:
+  EnforcedStyle: no_space
+
+Metrics/AbcSize:
+  Exclude:
+    - "pdf-rendering-template/spec/**/*"
+
+Metrics/BlockLength:
+  Exclude:
+    - "pdf-rendering-template/config/**/*"
+    - "pdf-rendering-template/spec/**/*"
+
+Metrics/ClassLength:
+  Exclude:
+    - "pdf-rendering-template/spec/**/*"
+
+Layout/LineLength:
+  Exclude:
+    - "pdf-rendering-template/config/**/*"
+    - "pdf-rendering-template/db/**/*"
+
+Metrics/MethodLength:
+  Max: 12
+  Exclude:
+    - "pdf-rendering-template/db/migrate/*"
+    - "pdf-rendering-template/spec/**/*"
+
+Naming/MemoizedInstanceVariableName:
+  EnforcedStyleForLeadingUnderscores: optional
+
+Naming/VariableNumber:
+  Enabled: false
+
+Performance/Casecmp:
+  Enabled: false
+
+Rails:
+  Enabled: true
+
+Rails/ApplicationRecord:
+  Exclude:
+    - "db/migrate/**"
+
+Rails/RefuteMethods:
+  Enabled: false
+
+Rails/Validation:
+  Enabled: false
+
+Style/BarePercentLiterals:
+  EnforcedStyle: percent_q
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/NumericPredicate:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/TrivialAccessors:
+  AllowPredicates: true
+
+RSpec/MultipleExpectations:
+  Max: 10
+
+RSpec/ExampleLength:
+  Max: 20
+
