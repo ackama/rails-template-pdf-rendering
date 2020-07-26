@@ -1,4 +1,4 @@
-def main
+def main # rubocop:disable Metrics/MethodLength
   add_template_repository_to_source_path
 
   directory "pdf-rendering-template/app", "app"
@@ -7,18 +7,25 @@ def main
 
   run "yarn add puppeteer"
 
+  route <<~EO_ROUTES_SNIPPET
+    resources :pdf_rendering_example, only: %i[index show]
+
+  EO_ROUTES_SNIPPET
+
   append_to_file "README.md" do
     <<~EO_MESSAGE
 
-    ## PDF Rendering
+      ## PDF Rendering
 
-    This app renders PDFs by shelling out to Google Chrome via the Puppeteer
-    Node API. See `app/services/pdf_rendering_service.rb` for details.
+      This app renders PDFs by shelling out to Google Chrome via the Puppeteer
+      Node API. See `app/services/pdf_rendering_service.rb` for details.
 
     EO_MESSAGE
   end
 
   puts <<~EO_BANNER
+    *************************************************************************
+    TODO: Install Google Chrome
     *************************************************************************
 
     PDF rendering requires you to have Google Chrome installed both locally
@@ -32,6 +39,17 @@ def main
     https://github.com/heroku/heroku-buildpack-google-chrome
 
     *************************************************************************
+    TODO: Delete/Edit the example controller
+    *************************************************************************
+
+    This template created an example controller which you should edit/delete to
+    fit your needs. Visit
+
+      http://localhost:3000/pdf_rendering_example/
+
+    to view the controller output.
+
+    *************************************************************************
   EO_BANNER
 end
 
@@ -39,8 +57,8 @@ end
 # copy_file and template resolve against our source files. If this file was
 # invoked remotely via HTTP, that means the files are not present locally.
 # In that case, use `git clone` to download them to a local temporary dir.
-def add_template_repository_to_source_path
-  if __FILE__ =~ %r{\Ahttps?://}
+def add_template_repository_to_source_path # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  if __FILE__.match?(%r{\Ahttps?://})
     require "tmpdir"
     source_paths.unshift(tempdir = Dir.mktmpdir("rails-template-pdf-rendering"))
     at_exit { FileUtils.remove_entry(tempdir) }

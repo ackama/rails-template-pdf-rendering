@@ -1,12 +1,18 @@
-class ExampleController < ApplicationController
+class PdfRenderingExampleController < ApplicationController
+  def index
+  end
+
   ##
-  # GET /example
+  # GET /pdf_rendering_example/:id
   # * Renders the HTML version
   #
-  # GET /example.pdf
-  # * Renders the HTML version and converts it to PDF
+  # GET /pdf_rendering_example/:id.pdf
+  # * Generates the HTML version and converts it to PDF
+  #
   #
   def show
+    @example_num = params[:id]
+
     respond_to do |format|
       format.html do
         render :show
@@ -27,4 +33,3 @@ class ExampleController < ApplicationController
     renderer.pdf
   end
 end
-
