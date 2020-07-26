@@ -30,8 +30,16 @@ class PdfRenderingExampleController < ApplicationController
   private
 
   def render_as_html(template_path:, assigments:)
-    renderer = ApplicationController.renderer.new
-
+    ##
+    # Create a new instance of of ActionController::Renderer, passing it our
+    # current request environment to use as it's environment. This ensures that
+    # all the methods that would normally work in the view templates will
+    # continue to work e.g. `current_user` needs Warden in the environment.
+    #
+    # Details:
+    #   https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/renderer.rb
+    #
+    renderer = ApplicationController.renderer.new(request.env)
     renderer.render(file: template_path, assigns: assigments)
   end
 
