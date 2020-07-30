@@ -8,7 +8,7 @@ class PdfRenderingService
 
   # Set a maximum amount of time we will allow Chrome to attempt to render the
   # PDF
-  PDF_CONVERSION_TIMEOUT_SECONDS = 30 # seconds
+  DEFAULT_PDF_CONVERSION_TIMEOUT_SECONDS= 30 # seconds
 
   attr_reader :pdf, :html
 
@@ -85,9 +85,10 @@ class PdfRenderingService
     cmd = "node #{Rails.root.join("bin/render-pdf.js")} #{input_html_path} #{output_pdf_path}"
     Rails.logger.info(cmd)
 
-    error_msg = "Chrome did not complete the PDF conversion within the #{PDF_CONVERSION_TIMEOUT_SECONDS} second timeout"
+    timeout_secs = Integer(ENV.fetch("PDF_CONVERSION_TIMEOUT_SECONDS", DEFAULT_PDF_CONVERSION_TIMEOUT_SECONDS))
+    error_msg = "Chrome did not complete the PDF conversion within the #{timeout_secs} second timeout"
 
-    Timeout.timeout(PDF_CONVERSION_TIMEOUT_SECONDS, ChromeTimeoutError, error_msg) do
+    Timeout.timeout(timeout_secs, ChromeTimeoutError, error_msg) do
       system(cmd)
     end
   end

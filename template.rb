@@ -50,6 +50,21 @@ def main # rubocop:disable Metrics/MethodLength
       This app renders PDFs by shelling out to Google Chrome via the Puppeteer
       Node API. See `app/services/pdf_rendering_service.rb` for details.
 
+      ### Configuration
+
+      Set the `PDF_CONVERSION_TIMEOUT_SECONDS` environment variable to adjust
+      how long we should wait for Chrome to render the page. The built-in
+      default is 30 seconds. For example:
+
+      ```sh
+      # export the env var to have it available to all commands in your shell
+      $ export PDF_CONVERSION_TIMEOUT_SECONDS=60 # wait one minute
+      $ bundle exec rails s
+
+      # or just set the env var for the rails server command
+      $ PDF_CONVERSION_TIMEOUT_SECONDS=60 bundle exec rails s
+      ```
+
       #{google_chrome_install_instructions}
     EO_MESSAGE
   end
