@@ -1,10 +1,23 @@
 <h1>Example content <%= @example_num %></h1>
 
+<% if current_user %>
+  <p>
+    This is a demonstration that, if Devise is installed, then its helpers work
+    when rendering this view as a PDF
+  </p>
+  <p>
+    Current user's email: <%= current_user.email %>
+  </p>
+<% end %>
+
 <p>
-<%= link_to("<< Back", pdf_rendering_example_index_path) %>
+  <%= link_to("<< Back", pdf_rendering_example_index_path) %>
 </p>
 
 <p>
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+  eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+  voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+  kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 </p>
 

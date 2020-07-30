@@ -127,8 +127,8 @@ class PdfRenderingService
   end
 
   def base_tag
-    domain = Rails.application.secrets.app_domain_name
-    protocol = Rails.application.secrets.app_protocol
+    domain = "changeme.example.com" # PDF_TEMPLATE_TODO: Edit this to fit your existing application
+    protocol = "http"               # PDF_TEMPLATE_TODO: Edit this to fit your existing application
 
     "<base href='#{protocol}://#{domain}'/>"
   end
