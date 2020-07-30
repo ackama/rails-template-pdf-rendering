@@ -18,17 +18,20 @@ console.log("Output path:", outputPath);
 
 (async () => {
   const browser = await puppeteer.launch();
-  const page = await browser.newPage();
+  try {
+    const page = await browser.newPage();
 
-  console.log("Starting PDF conversion");
-  await page.goto(inputPath, { waitUntil: "networkidle2" });
+    console.log("Starting PDF conversion");
+    await page.goto(inputPath, { waitUntil: "networkidle2" });
 
-  // https://github.com/GoogleChrome/puppeteer/blob/v1.4.0/docs/api.md#pagepdfoptions
-  await page.pdf({
-    path: outputPath,
-    format: "A4"
-  });
+    // https://github.com/GoogleChrome/puppeteer/blob/v1.4.0/docs/api.md#pagepdfoptions
+    await page.pdf({
+      path: outputPath,
+      format: "A4"
+    });
 
-  console.log("PDF conversion complete");
-  await browser.close();
+    console.log("PDF conversion complete");
+  } finally {
+    await browser.close();
+  }
 })();
