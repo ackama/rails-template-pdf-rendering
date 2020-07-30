@@ -57,6 +57,13 @@ def main # rubocop:disable Metrics/MethodLength
     to view the controller output.
 
     *************************************************************************
+    TODO: Make the required small edits suggested by PDF_TEMPLATE_TODO: items
+    *************************************************************************
+
+    Using your editor, find all occurances of PDF_TEMPLATE_TODO and make the
+    suggested changes.
+
+    *************************************************************************
   EO_BANNER
 end
 

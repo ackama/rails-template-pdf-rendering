@@ -1,16 +1,12 @@
 # Rails template for PDF Rendering
 
-Rendering PDFs in Rails is a pattern we need fairly regularly.
-
-* This Rails template can be applied to an an existing Rails app.
-* Rails templates are a bit like generators - this template will create and edit files in your app to implement PDF rendering.
-* You can review and edit the files as you need before you commit them to your app.
+Rendering PDFs is a common feature on our Rails apps. This template, which works similarly to Rails generator, will create and edit files in your existing Rails app to implement the feature. You can then tweak these files to suit the needs of your app.
 
 
 ## How-to use this template
 
 ```bash
-# Step 1: Ensure you are in a clean git environment.
+# Step 1: Navigate to your Rails app in your terminal
 $ cd path/to/your/rails/app
 
 # Step 2: Ensure you are in a clean git environment.
@@ -19,18 +15,19 @@ $ cd path/to/your/rails/app
 #    before you commit them - that will be more annoying if you have other
 #    uncommited changes.
 
-# Step 3:
-
+# Step 3: Run the template by referencing it's location on Github ...
 $ bundle exec rails app:template LOCATION=https://raw.githubusercontent.com/ackama/rails-template-pdf-rendering/main/template.rb
 
-# or if you have already cloned this repo locally then
+# ... or if you have already cloned this repo locally then you can use that path
 $ bundle exec rails app:template LOCATION=path/to/wherever/you/cloned/rails-template-pdf-rendering/template.rb
+
+# Step 4: Address all the TODO items which appear in the output of the template
 ```
 
-## How to develop this template
+## How-to improve this template
 
 ```bash
-# Step: Clone this repo
+# First, clone this repo
 
 $ cd path/to/this/repo
 

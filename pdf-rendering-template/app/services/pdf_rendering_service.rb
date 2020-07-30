@@ -107,6 +107,15 @@ class PdfRenderingService
     end
   end
 
+  ##
+  # When we shell out to Chrome to render the PDF, we will be giving it a
+  # `.html` file on disk, not pointing it at a URL from our live application. A
+  # consequence of this is that relative links in the `.html` will not resolve
+  # without having a `<base href="https://...">` tag in `<head>` to provide the
+  # protocol and domain part of the URL.
+  #
+  # This method generates and inserts that tag.
+  #
   def mutate_html_by_inserting_base_tag
     # @html is potentially a very large string so we deliberately choose to
     # mutate it in place with #sub! instead of making a new copy with #sub for
