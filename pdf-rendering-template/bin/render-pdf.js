@@ -34,4 +34,8 @@ console.log("Output path:", outputPath);
   } finally {
     await browser.close();
   }
-})();
+})().catch(error => {
+  console.error(error);
+  
+  process.exit(1);
+});
