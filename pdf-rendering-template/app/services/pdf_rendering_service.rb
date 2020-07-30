@@ -8,7 +8,7 @@ class PdfRenderingService
 
   # Set a maximum amount of time we will allow Chrome to attempt to render the
   # PDF
-  DEFAULT_PDF_CONVERSION_TIMEOUT_SECONDS= 30 # seconds
+  DEFAULT_PDF_CONVERSION_TIMEOUT_SECONDS = 30 # seconds
 
   attr_reader :pdf, :html
 
