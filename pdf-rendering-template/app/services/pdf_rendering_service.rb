@@ -96,17 +96,6 @@ class PdfRenderingService
     FileUtils.mkdir_p(TMP_DIR_PATH) unless Dir.exist?(TMP_DIR_PATH)
   end
 
-  def google_chrome_path
-    case Gem::Platform.local.os
-    when "darwin" # macOS
-      Shellwords.escape("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
-    when "linux"
-      Shellwords.escape("google-chrome-stable")
-    else
-      fail MissingChromeBinaryError
-    end
-  end
-
   ##
   # When we shell out to Chrome to render the PDF, we will be giving it a
   # `.html` file on disk, not pointing it at a URL from our live application. A
