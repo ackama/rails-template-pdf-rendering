@@ -10,8 +10,8 @@
 
 const puppeteer = require("puppeteer");
 
-const inputPath = `file://${process.argv[2]}`;
-const outputPath = process.argv[3];
+const [,, rawInputPath, outputPath] = process.argv;
+const inputPath = `file://${rawInputPath}`;
 
 console.log("Input path:", inputPath);
 console.log("Output path:", outputPath);
@@ -32,4 +32,3 @@ console.log("Output path:", outputPath);
   console.log("PDF conversion complete");
   await browser.close();
 })();
-
