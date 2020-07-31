@@ -6,44 +6,43 @@ require:
 inherit_from:
   - https://bitbucket.org/rabidtech/rabid-dotfiles/raw/master/.rubocop.yml
 
-
 AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
   TargetRubyVersion: 2.6
   Exclude:
     - db/schema.rb
-    - "node_modules/**/*"
-    - "bower_components/**/*"
-    - "tmp/**/*"
-    - "vendor/**/*"
+    - 'node_modules/**/*'
+    - 'bower_components/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
 
 Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
 
 Metrics/AbcSize:
   Exclude:
-    - "pdf-rendering-template/spec/**/*"
+    - 'pdf-rendering-template/spec/**/*'
 
 Metrics/BlockLength:
   Exclude:
-    - "pdf-rendering-template/config/**/*"
-    - "pdf-rendering-template/spec/**/*"
+    - 'pdf-rendering-template/config/**/*'
+    - 'pdf-rendering-template/spec/**/*'
 
 Metrics/ClassLength:
   Exclude:
-    - "pdf-rendering-template/spec/**/*"
+    - 'pdf-rendering-template/spec/**/*'
 
 Layout/LineLength:
   Exclude:
-    - "pdf-rendering-template/config/**/*"
-    - "pdf-rendering-template/db/**/*"
+    - 'pdf-rendering-template/config/**/*'
+    - 'pdf-rendering-template/db/**/*'
 
 Metrics/MethodLength:
   Max: 12
   Exclude:
-    - "pdf-rendering-template/db/migrate/*"
-    - "pdf-rendering-template/spec/**/*"
+    - 'pdf-rendering-template/db/migrate/*'
+    - 'pdf-rendering-template/spec/**/*'
 
 Naming/MemoizedInstanceVariableName:
   EnforcedStyleForLeadingUnderscores: optional
@@ -59,7 +58,7 @@ Rails:
 
 Rails/ApplicationRecord:
   Exclude:
-    - "db/migrate/**"
+    - 'db/migrate/**'
 
 Rails/RefuteMethods:
   Enabled: false
@@ -99,4 +98,3 @@ RSpec/MultipleExpectations:
 
 RSpec/ExampleLength:
   Max: 20
-
