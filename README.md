@@ -1,7 +1,9 @@
 # Rails template for PDF Rendering
 
-Rendering PDFs is a common feature on our Rails apps. This template, which works similarly to Rails generator, will create and edit files in your existing Rails app to implement the feature. You can then tweak these files to suit the needs of your app.
-
+Rendering PDFs is a common feature on our Rails apps. This template, which works
+similarly to Rails generator, will create and edit files in your existing Rails
+app to implement the feature. You can then tweak these files to suit the needs
+of your app.
 
 ## How-to use this template
 

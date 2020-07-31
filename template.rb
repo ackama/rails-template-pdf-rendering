@@ -74,7 +74,6 @@ def main # rubocop:disable Metrics/MethodLength
     EO_MESSAGE
   end
 
-
   puts <<~EO_BANNER
     *************************************************************************
     TODO: Install Google Chrome
