@@ -22,47 +22,52 @@ def main # rubocop:disable Metrics/MethodLength
   google_chrome_install_instructions = <<~EO_CHROME_INSTALL
     ### Installing Google Chrome
 
-    PDF rendering requires you to have Google Chrome installed both locally
-    (for development) and on your deployed environments. Here are some options
-    for installing chrome on server environments:
+    PDF rendering requires you to have Google Chrome installed both locally (for
+    development) and on your deployed environments. Here are some options for
+    installing chrome on server environments:
 
-    * Ubuntu Linux (suitable for AWS EC2 deployments):
+    - Ubuntu Linux (suitable for AWS EC2 deployments):
       ```bash
       $ wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
       $ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
       $ sudo apt-get update
       $ sudo apt-get install google-chrome
       ```
-    * Heroku
-      * https://github.com/heroku/heroku-buildpack-google-chrome
-    * macOS
-      * https://www.google.com/chrome/
-    * Windows
-      * https://www.google.com/chrome/
-
+    - Heroku
+      - https://github.com/heroku/heroku-buildpack-google-chrome
+    - macOS
+      - https://www.google.com/chrome/
+    - Windows
+      - https://www.google.com/chrome/
   EO_CHROME_INSTALL
 
   append_to_file "README.md" do
     <<~EO_MESSAGE
-
       ## PDF Rendering
 
-      This app renders PDFs by shelling out to Google Chrome via the Puppeteer
-      Node API. See `app/services/pdf_rendering_service.rb` for details.
+      This app renders PDFs by shelling out to Google Chrome via the Puppeteer Node
+      API. See `app/services/pdf_rendering_service.rb` for details.
 
       ### Configuration
 
-      Set the `PDF_CONVERSION_TIMEOUT_SECONDS` environment variable to adjust
-      how long we should wait for Chrome to render the page. The built-in
-      default is 30 seconds. For example:
+      The following environment variables can be set to tune PDF rendering:
+
+      - `PDF_RENDERING_TIMEOUT_SECONDS`
+        - adjust how long we should wait for Chrome to render the page. The built-in
+          default is 30 seconds.
+      - `PDF_RENDERING_PATH_TO_CHROME`
+        - You probably only need this if you are doing Rails dev in WSL on Windows
+
+      Environment variables can be set in your Heroku console or on the command line
+      e.g.
 
       ```sh
       # export the env var to have it available to all commands in your shell
-      $ export PDF_CONVERSION_TIMEOUT_SECONDS=60 # wait one minute
+      $ export PDF_RENDERING_TIMEOUT_SECONDS=60 # wait one minute
       $ bundle exec rails s
 
       # or just set the env var for the rails server command
-      $ PDF_CONVERSION_TIMEOUT_SECONDS=60 bundle exec rails s
+      $ PDF_RENDERING_TIMEOUT_SECONDS=60 bundle exec rails s
       ```
 
       #{google_chrome_install_instructions}

@@ -7,7 +7,7 @@ class PdfRenderingService
     end
 
     def download_as_filename
-      "#{Time.zone.now.strftime("%Y-%m-%d")}-TODO_YOUR_FILE_NAME.pdf"
+      "#{Time.zone.now.strftime("%Y-%m-%d")}-PDF_TEMPLATE_TODO_SET_A_FILE_NAME.pdf"
     end
 
     def mime_type
