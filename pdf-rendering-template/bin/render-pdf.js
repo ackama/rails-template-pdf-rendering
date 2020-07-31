@@ -24,7 +24,7 @@ console.log('Output path:', outputPath);
   // `--no-sandbox` is required on Heroku - see
   // https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#running-puppeteer-on-heroku
   const browser = await puppeteer.launch({
-    args: ['--no-sandbox'],
+    args: ['--no-sandbox', '--single-process'],
     executablePath: chromePath
   });
 
@@ -49,4 +49,3 @@ console.log('Output path:', outputPath);
 
   process.exit(1);
 });
-
