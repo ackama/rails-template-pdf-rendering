@@ -1,0 +1,4 @@
+# this file uses .gitignore syntax
+node_modules/
+vendor/
+tmp/

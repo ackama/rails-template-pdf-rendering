@@ -1,0 +1,10 @@
+<h1>PDF Rendering Examples</h1>
+
+<% (1..5).each do |n| %>
+  <p>
+  Example <%= n %>
+  <%= link_to("View", pdf_rendering_example_path(n)) %>
+  <%= link_to("Download as PDF", pdf_rendering_example_path(n, format: :pdf)) %>
+  </p>
+<% end %>
+

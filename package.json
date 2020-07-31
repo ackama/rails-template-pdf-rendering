@@ -1,0 +1,25 @@
+{
+  "name": "rails-template-pdf-rendering",
+  "private": true,
+  "dependencies": {},
+  "version": "1.0.0",
+  "devDependencies": {
+    "eslint": "^7.5.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5",
+    "prettier-config-ackama": "^0.1.2"
+  },
+  "prettier": "prettier-config-ackama",
+  "browserslist": [
+    "defaults",
+    "maintained node versions"
+  ],
+  "scripts": {
+    "js-lint": "eslint . --ignore-pattern '!.eslintrc.js' --ext js,ts,tsx,jsx",
+    "js-lint-fix": "eslint . --ignore-pattern '!.eslintrc.js' --ext js,ts,tsx,jsx --fix",
+    "format-check": "prettier --check './**/*.{css,scss,json,md,yml,js,ts,tsx,jsx}'",
+    "format-fix": "prettier --write './**/*.{css,scss,json,md,yml,js,ts,tsx,jsx}'"
+  }
+}

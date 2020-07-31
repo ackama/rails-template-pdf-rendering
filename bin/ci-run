@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# exit immediately if any command fails
+set -e
+
+# print each line of this script as it is about to run
+set -x
+
+npm run format-check
+npm run js-lint
+bundle exec rubocop
